@@ -9,7 +9,6 @@ namespace DAL.Entities
         Gasoline,
         Diesel
     }
-
     public class Advert
     {
         public int ID { get; set; }
