@@ -9,7 +9,7 @@ namespace Car_Adverts.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarAdvertsController : ControllerBase
+    public class AdvertsController : ControllerBase
     {
     }
 }
