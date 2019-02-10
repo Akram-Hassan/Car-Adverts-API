@@ -2,9 +2,9 @@ using DAL.Entities;
 using NUnit.Framework;
 using System;
 
-namespace Tests
+namespace UnitTests
 {
-    public class UnitTests
+    public class AdvertStateTests
     {
         [Test]
         public void CreatedAdvertCannotHaveMileage()
