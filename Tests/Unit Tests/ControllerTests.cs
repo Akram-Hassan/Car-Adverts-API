@@ -74,5 +74,36 @@ namespace UnitTests
             var actionResult = controller.Post(newAdvertVM) as BadRequestResult;
             Assert.That(actionResult, Is.Not.Null);
         }
+
+        [Test]
+        public void TestUpdateValidModel()
+        {
+            AdvertVM advertVM = new AdvertVM
+            {
+                Id = 1,
+                Title = "Title After Update",
+                Fuel = FuelType.Diesel,
+                New = true
+            };
+
+            var actionResult = controller.PutAdvert(1 , advertVM) as NoContentResult;
+
+            Assert.That(actionResult, Is.Not.Null);
+        }
+
+        [Test]
+        public void TestUpdateWithInvalidModelId()
+        {
+            AdvertVM advertVM = new AdvertVM
+            {
+                Id = 1,
+                Title = "Title After Update",
+                Fuel = FuelType.Diesel,
+                New = true
+            };
+
+            var actionResult = controller.PutAdvert(2, advertVM) as BadRequestResult;
+            Assert.That(actionResult, Is.Not.Null);
+        }
     }
 }

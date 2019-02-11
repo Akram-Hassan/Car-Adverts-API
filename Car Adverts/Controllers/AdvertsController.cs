@@ -73,5 +73,25 @@ namespace Car_Adverts.Controllers
             repository.Add(advert);
             return CreatedAtAction("Get", new { id = advert.Id }, advert);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult PutAdvert([FromRoute] int id, [FromBody] AdvertVM advertVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != advertVM.Id)
+            {
+                return BadRequest();
+            }
+
+            var advert = Map(advertVM);
+            repository.Update(advert);
+
+            return NoContent();
+        }
+
     }
 }
