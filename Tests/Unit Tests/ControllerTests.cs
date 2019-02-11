@@ -26,5 +26,14 @@ namespace UnitTests
             var advert = controller.Get().FirstOrDefault();
             Assert.That(advert.Title, Is.EqualTo("New Disesel Car Advert"));
         }
+
+        [Test]
+        public void TestGetById()
+        {
+            var advert = controller.Get(3);
+
+            Assert.That(advert.Title, Is.EqualTo("Used Diesel Car Advert"));
+            Assert.That(advert.FirstRegistration, Is.EqualTo(new DateTime(2015, 01, 01)));
+        }
     }
 }

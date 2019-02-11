@@ -35,5 +35,9 @@ namespace Car_Adverts.Controllers
                 Mileage = advert.Mileage,
                 FirstRegistration = advert.FirstRegistration
             };
+
+        [HttpGet("{id}")]
+        public AdvertVM Get([FromRoute]int id)
+            => Map( repository.GetById(id) );
     }
 }
