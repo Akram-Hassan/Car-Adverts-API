@@ -17,7 +17,9 @@ namespace DAL
         }
 
         public IEnumerable<Advert> GetAll() => context.Adverts;
+
         public Advert GetById(int id) => context.Adverts.FirstOrDefault(a => a.ID == id);
+
         public void Add(Advert advert)
         {
             context.Adverts.Add(advert);
