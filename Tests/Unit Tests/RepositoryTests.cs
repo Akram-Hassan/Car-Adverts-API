@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
@@ -54,6 +55,18 @@ namespace UnitTests
             var advertTwo = repository.GetById(2);
             Assert.That(advertTwo.ID, Is.EqualTo(2));
             Assert.That(advertTwo.Title, Is.EqualTo("New Gasoline Car Advert"));
+        }
+
+        [Test]
+        public void TestAdd()
+        {
+            var newAdvert = new Advert { ID = 5 , Title = "Newly added advert", Fuel = FuelType.Diesel, New = true };
+
+            repository.Add(newAdvert);
+
+            var foundAdvert = repository.GetById(5);
+
+            Assert.That(foundAdvert.Title, Is.EqualTo("Newly added advert"));
         }
     }
 }
