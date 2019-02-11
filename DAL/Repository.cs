@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,12 @@ namespace DAL
         public void Add(Advert advert)
         {
             context.Adverts.Add(advert);
+            context.SaveChanges();
+        }
+
+        public void Update(Advert advert)
+        {
+            context.Entry(advert).State = EntityState.Modified;
             context.SaveChanges();
         }
     }

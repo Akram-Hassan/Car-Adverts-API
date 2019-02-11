@@ -68,5 +68,21 @@ namespace UnitTests
 
             Assert.That(foundAdvert.Title, Is.EqualTo("Newly added advert"));
         }
+
+        [Test]
+        public void TestEdit()
+        {
+            var advert = repository.GetById(3);
+            advert.Title = "Modified Title";
+            advert.FirstRegistration = new DateTime(2017, 12, 01);
+
+            repository.Update(advert);
+
+            var modifiedAdvert = repository.GetById(3);
+
+            Assert.That(modifiedAdvert.Title, Is.EqualTo("Modified Title"));
+            Assert.That(modifiedAdvert.FirstRegistration, Is.EqualTo(new DateTime(2017, 12, 01)));
+        }
+
     }
 }
