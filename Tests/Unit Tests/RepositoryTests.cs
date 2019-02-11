@@ -42,20 +42,18 @@ namespace UnitTests
         }
 
         [Test]
-        public void TestRepositoryGetFirst()
+        public void TestGetFirst()
         {
             var id = repository.GetAll().FirstOrDefault()?.ID;
             Assert.That(id, Is.EqualTo(1));
         }
 
         [Test]
-        public void TestRepositoryGetById()
+        public void TestGetById()
         {
             var advertTwo = repository.GetById(2);
             Assert.That(advertTwo.ID, Is.EqualTo(2));
             Assert.That(advertTwo.Title, Is.EqualTo("New Gasoline Car Advert"));
         }
-
-
     }
 }
