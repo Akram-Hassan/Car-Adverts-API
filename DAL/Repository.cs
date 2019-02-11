@@ -29,5 +29,11 @@ namespace DAL
             context.Entry(advert).State = EntityState.Modified;
             context.SaveChanges();
         }
+
+        public void Delete(Advert advert)
+        {
+            context.Entry(advert).State = EntityState.Deleted;
+            context.SaveChanges();
+        }
     }
 }

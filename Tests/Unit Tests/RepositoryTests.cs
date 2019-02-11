@@ -84,5 +84,16 @@ namespace UnitTests
             Assert.That(modifiedAdvert.FirstRegistration, Is.EqualTo(new DateTime(2017, 12, 01)));
         }
 
+        [Test]
+        public void TestDelete()
+        {
+            var advert = repository.GetById(3);
+
+            repository.Delete(advert);
+
+            var modifiedAdvert = repository.GetById(3);
+
+            Assert.That(modifiedAdvert, Is.Null);
+        }
     }
 }
