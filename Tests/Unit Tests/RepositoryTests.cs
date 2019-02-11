@@ -14,7 +14,7 @@ namespace UnitTests
         [Test]
         public void TestGetFirst()
         {
-            var id = repository.GetAll().FirstOrDefault()?.ID;
+            var id = repository.GetAll().FirstOrDefault()?.Id;
             Assert.That(id, Is.EqualTo(1));
         }
 
@@ -22,14 +22,14 @@ namespace UnitTests
         public void TestGetById()
         {
             var advertTwo = repository.GetById(2);
-            Assert.That(advertTwo.ID, Is.EqualTo(2));
+            Assert.That(advertTwo.Id, Is.EqualTo(2));
             Assert.That(advertTwo.Title, Is.EqualTo("New Gasoline Car Advert"));
         }
 
         [Test]
         public void TestAdd()
         {
-            var newAdvert = new Advert { ID = 5 , Title = "Newly added advert", Fuel = FuelType.Diesel, New = true };
+            var newAdvert = new Advert { Id = 5 , Title = "Newly added advert", Fuel = FuelType.Diesel, New = true };
 
             repository.Add(newAdvert);
 

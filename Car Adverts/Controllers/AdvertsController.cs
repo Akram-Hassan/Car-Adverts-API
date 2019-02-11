@@ -21,14 +21,14 @@ namespace Car_Adverts.Controllers
             this.repository = repository;
         }
 
+        [HttpGet()]
         public IEnumerable<AdvertVM> Get() 
-            => repository.GetAll().Select(a => Map(a));
+            => repository.GetAll().Select(a => MapToViewModel(a));
 
-
-
-        private AdvertVM Map(Advert advert)
+        private AdvertVM MapToViewModel(Advert advert)
             => new AdvertVM
             {
+                Id = advert.Id,
                 Title = advert.Title,
                 Fuel = advert.Fuel,
                 New = advert.New,
@@ -36,8 +36,34 @@ namespace Car_Adverts.Controllers
                 FirstRegistration = advert.FirstRegistration
             };
 
+        private Advert Map(AdvertVM advert)
+            => new Advert
+            {
+                Id = advert.Id,
+                Title = advert.Title,
+                Fuel = advert.Fuel,
+                New = advert.New,
+                Mileage = advert.Mileage,
+                FirstRegistration = advert.FirstRegistration
+            };
+
+
         [HttpGet("{id}")]
         public AdvertVM Get([FromRoute]int id)
-            => Map( repository.GetById(id) );
+            => MapToViewModel( repository.GetById(id) );
+
+        [HttpPost]
+        public IActionResult Post([FromBody] AdvertVM viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var advert = Map(viewModel);
+            repository.Add(advert);
+
+            return CreatedAtAction("Get", new { id = advert.Id }, advert);
+        }
     }
 }

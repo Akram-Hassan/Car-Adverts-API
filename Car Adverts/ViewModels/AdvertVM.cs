@@ -9,6 +9,7 @@ namespace Car_Adverts.ViewModels
 {
     public class AdvertVM
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public FuelType Fuel { get; set; }
         public bool New { get; set; }

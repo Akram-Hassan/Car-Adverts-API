@@ -9,10 +9,10 @@ namespace DAL
     public class ApplicationDbContext : DbContext
     {
         private Advert[] seedAdverts = {
-            new Advert {ID = 1 , Title = "New Disesel Car Advert" , Fuel = FuelType.Diesel , New = true},
-            new Advert {ID = 2 , Title = "New Gasoline Car Advert" , Fuel = FuelType.Gasoline , New = true},
-            new Advert {ID = 3 , Title = "Used Diesel Car Advert" , Fuel = FuelType.Diesel , New = false , Mileage = 30 , FirstRegistration = new DateTime(2015,01,01)},
-            new Advert {ID = 4 , Title = "Used Gasoline Car Advert" , Fuel = FuelType.Gasoline , New = false , Mileage = 45 , FirstRegistration = new DateTime(2010,05,01)}
+            new Advert {Id = 1 , Title = "New Disesel Car Advert" , Fuel = FuelType.Diesel , New = true},
+            new Advert {Id = 2 , Title = "New Gasoline Car Advert" , Fuel = FuelType.Gasoline , New = true},
+            new Advert {Id = 3 , Title = "Used Diesel Car Advert" , Fuel = FuelType.Diesel , New = false , Mileage = 30 , FirstRegistration = new DateTime(2015,01,01)},
+            new Advert {Id = 4 , Title = "Used Gasoline Car Advert" , Fuel = FuelType.Gasoline , New = false , Mileage = 45 , FirstRegistration = new DateTime(2010,05,01)}
         };
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -22,6 +22,10 @@ namespace DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Advert>()
+            //    .Property(f => f.ID)
+            //    .ValueGeneratedOnAdd();
+
             modelBuilder.Entity<Advert>().HasData(seedAdverts);
         }
     }
