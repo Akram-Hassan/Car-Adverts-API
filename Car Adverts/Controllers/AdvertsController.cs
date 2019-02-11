@@ -21,10 +21,10 @@ namespace Car_Adverts.Controllers
             this.repository = repository;
         }
 
-        public IEnumerable<AdvertVM> Get()
-        {
-            return repository.GetAll().Select( a => Map(a) );
-        }
+        public IEnumerable<AdvertVM> Get() 
+            => repository.GetAll().Select(a => Map(a));
+
+
 
         private AdvertVM Map(Advert advert)
             => new AdvertVM
