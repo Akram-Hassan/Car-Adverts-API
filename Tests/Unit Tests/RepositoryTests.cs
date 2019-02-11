@@ -47,5 +47,15 @@ namespace UnitTests
             var id = repository.GetAll().FirstOrDefault()?.ID;
             Assert.That(id, Is.EqualTo(1));
         }
+
+        [Test]
+        public void TestRepositoryGetById()
+        {
+            var advertTwo = repository.GetById(2);
+            Assert.That(advertTwo.ID, Is.EqualTo(2));
+            Assert.That(advertTwo.Title, Is.EqualTo("New Gasoline Car Advert"));
+        }
+
+
     }
 }
