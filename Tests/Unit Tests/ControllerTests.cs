@@ -57,5 +57,22 @@ namespace UnitTests
             Assert.That(actionResult, Is.Not.Null);
             Assert.That(actionResult.StatusCode, Is.EqualTo(201));
         }
+
+        [Test]
+        public void TestInsertInvalidModel()
+        {
+            AdvertVM newAdvertVM = new AdvertVM
+            {
+                Id = 10,
+                Title = "New Invalid Advert",
+                Fuel = FuelType.Diesel,
+                New = true,
+                Mileage = 3000,
+                FirstRegistration = DateTime.Today.AddYears(-10)
+            };
+
+            var actionResult = controller.Post(newAdvertVM) as BadRequestResult;
+            Assert.That(actionResult, Is.Not.Null);
+        }
     }
 }

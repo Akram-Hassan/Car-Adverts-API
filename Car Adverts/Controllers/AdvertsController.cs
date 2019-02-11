@@ -60,9 +60,17 @@ namespace Car_Adverts.Controllers
                 return BadRequest(ModelState);
             }
 
-            var advert = Map(viewModel);
-            repository.Add(advert);
+            Advert advert;
+            try
+            {
+                advert = Map(viewModel);
+            }
+            catch (InvalidOperationException) 
+            {
+                return BadRequest();
+            }
 
+            repository.Add(advert);
             return CreatedAtAction("Get", new { id = advert.Id }, advert);
         }
     }
