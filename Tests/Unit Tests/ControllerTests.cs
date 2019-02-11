@@ -9,38 +9,15 @@ using System.Text;
 
 namespace UnitTests
 {
-    public class ControllerTests
+    public class ControllerTests : TestBase 
     {
-        private ApplicationDbContext CreateContext()
-        {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase("Scout24Adverts")
-            .Options;
-
-            var context = new ApplicationDbContext(options);
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-            return context;
-        }
 
         private AdvertsController controller;
-        private Repository repository;
-        private ApplicationDbContext context;
 
         [SetUp]
-        public void SetUp()
+        public void Setup()
         {
-            context = CreateContext();
-            repository = new Repository(context);
             controller = new AdvertsController(repository);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            context.Dispose();
-            context = null;
-            repository = null;
         }
 
         [Test]
