@@ -7,5 +7,5 @@ The project demnostrates The following technical practices:
 * The repoistory pattern.
 * Test automation using NUNIT.
 * Dependency injection using ASP.NET Core.
-* The depency inversion principle throug separating interfaces from concrete implementations.
+* The depency inversion principle through separating interfaces from concrete implementations.
 
